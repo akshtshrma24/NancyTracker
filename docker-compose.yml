@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+   influxDB:
+    container_name: influxDB
+    image: influxdb:1.8
+    restart: 'on-failure'
+    volumes:
+      - /:/var/lib/docker/volumes/influxdb/_data
+    ports:
+      - '8086:8086' 
