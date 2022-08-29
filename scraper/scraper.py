@@ -1,7 +1,7 @@
 import sys
 import time
 
-from prometheus_client import start_http_server, Summary
+from prometheus_client import start_http_server, Gauge
 
 from data import getData 
 from influxHandler import * 

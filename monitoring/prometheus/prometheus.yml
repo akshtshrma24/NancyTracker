@@ -6,6 +6,6 @@ scrape_configs:
     static_configs: 
       - targets: ['cadvisor:8080']
 
-  - job_name: 'ping_monitoring'
+  - job_name: 'nancy_tracker'
     static_configs:
-      - targets: ['ping_monitoring:5000']
+      - targets: ['nancy_tracker:5000']
