@@ -1,4 +1,4 @@
-HEADERS_GET_DATA={
+HEADERS_GET_DATA = {
     'authority': 'phx.unusualwhales.com',
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9',
@@ -13,8 +13,8 @@ HEADERS_GET_DATA={
     'sec-fetch-site': 'same-site',
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
 }
-PARAMS={
+PARAMS = {
     'db': 'mydb',
 }
-HEADERS_INFLUX={'Content-Type': 'application/x-www-form-urlencoded',}
-DATA_QUERY='q=SELECT * FROM "stockHist"'
+HEADERS_INFLUX = {'Content-Type': 'application/x-www-form-urlencoded', }
+DATA_QUERY = 'q=SELECT * FROM "stockHist"'
