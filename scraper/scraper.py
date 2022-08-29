@@ -11,7 +11,7 @@ from logger import *
 createDB()
     
 info("Starting Scraper")
-trade_made = Gauge('trade_made', '1 if she made trade 0 if she didnt in past hour')
+trade_made = Gauge('trade_made', '1 if she made trade 0 if she didnt in past hour', ['trade'])
 start_http_server(5000)
 # Generate some requests.
 if __name__ == '__main__':
@@ -19,10 +19,10 @@ if __name__ == '__main__':
         data = getData()
         if (data != None and not isInside(data)):
             success("Trade Made!")
-            trade_made.set(1)
+            trade_made.labels(str(data)).set(1)
             postData(data)
         else:
-            trade_made.set(0)
+            trade_made.labels(str(data)).set(0)
         time.sleep(int(sys.argv[1]))
 
 
