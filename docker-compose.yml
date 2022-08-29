@@ -1,7 +1,16 @@
 version: '2'
 
 services:
-   influxDB:
+  nancy_tracker:
+    container_name:  nancy_tracker
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '5000:5000'
+    depends_on:
+      - influxDB
+  influxDB:
     container_name: influxDB
     image: influxdb:1.8
     restart: 'on-failure'
@@ -9,3 +18,29 @@ services:
       - /:/var/lib/docker/volumes/influxdb/_data
     ports:
       - '8086:8086' 
+  cadvisor:
+    image: zcube/cadvisor:latest
+    container_name: cadvisor
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    depends_on:
+      - ping_monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./monitoring/prometheus:/etc/prometheus:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'

@@ -14,7 +14,8 @@ HEADERS_GET_DATA = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
 }
 PARAMS = {
-    'db': 'mydb',
+    'db': 'stockHist',
 }
 HEADERS_INFLUX = {'Content-Type': 'application/x-www-form-urlencoded', }
 DATA_QUERY = 'q=SELECT * FROM "stockHist"'
+CREATE_DATABASE = 'q=CREATE DATABASE "stockHist"'
