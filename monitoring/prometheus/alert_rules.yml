@@ -1,0 +1,12 @@
+groups: 
+  - name: alert_rules
+    interval: 15s
+    rules:
+      - alert: TradeMade
+        expr: trade_made > 0
+        for: 1s
+        labels:
+          severity: page
+        annotations:
+          summary: 'Nancy Pelosi Has Made a Trade'
+          description: '{{$labels.trade}}'
